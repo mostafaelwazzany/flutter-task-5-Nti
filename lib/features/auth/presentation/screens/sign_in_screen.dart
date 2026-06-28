@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/shared/widgets/app_button.dart';
+import 'package:flutter_application_1/shared/widgets/app_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -77,20 +79,9 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  TextField(
-                    decoration: InputDecoration(
-                      hintText: 'rebecca@home.io',
-                      prefixIcon: const Icon(
-                        Icons.mail_outline,
-                        color: Colors.grey,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
+                  const AppTextField(
+                    hintText: 'rebecca@home.io',
+                    prefixIcon: Icons.mail_outline,
                   ),
                   const SizedBox(height: 20),
                   const Text(
@@ -102,25 +93,11 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  TextField(
+                  const AppTextField(
+                    hintText: 'Enter your password',
+                    prefixIcon: Icons.key_outlined,
+                    suffixIcon: Icons.visibility_outlined,
                     obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Enter your password',
-                      prefixIcon: const Icon(
-                        Icons.key_outlined,
-                        color: Colors.grey,
-                      ),
-                      suffixIcon: const Icon(
-                        Icons.visibility_outlined,
-                        color: Colors.grey,
-                      ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
-                      ),
-                    ),
                   ),
                   const SizedBox(height: 12),
                   Align(
@@ -140,28 +117,9 @@ class SignInScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     height: 56,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryGreen,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
+                    child: AppButton(
+                      buttonLabel: 'Sign In',
                       onPressed: () {},
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Sign In ',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(Icons.arrow_forward, color: Colors.white, size: 18),
-                        ],
-                      ),
                     ),
                   ),
                   const SizedBox(height: 30),

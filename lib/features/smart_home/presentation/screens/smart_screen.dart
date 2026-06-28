@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constants/app_colors.dart';
 
-class SmartScreen extends StatefulWidget {
+class SmartScreen extends StatelessWidget {
   const SmartScreen({super.key});
-
-  @override
-  State<SmartScreen> createState() => _SmartScreenState();
-}
-
-class _SmartScreenState extends State<SmartScreen> {
-  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -159,10 +152,10 @@ class _SmartScreenState extends State<SmartScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildBottomNavItem(Icons.home_outlined, 0),
-            _buildBottomNavItem(Icons.bar_chart_outlined, 1),
-            _buildBottomNavItem(Icons.calendar_today_outlined, 2),
-            _buildBottomNavItem(Icons.settings_outlined, 3),
+            _buildBottomNavItem(Icons.home_outlined, true),
+            _buildBottomNavItem(Icons.bar_chart_outlined, false),
+            _buildBottomNavItem(Icons.calendar_today_outlined, false),
+            _buildBottomNavItem(Icons.settings_outlined, false),
           ],
         ),
       ),
@@ -263,35 +256,25 @@ class _SmartScreenState extends State<SmartScreen> {
     );
   }
 
-  Widget _buildBottomNavItem(IconData icon, int index) {
-    final isSelected = _currentIndex == index;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      behavior: HitTestBehavior.opaque,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: 26,
-            color: isSelected ? AppColors.darkGreen : Colors.grey.shade400,
+  Widget _buildBottomNavItem(IconData icon, bool isSelected) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: 26,
+          color: isSelected ? AppColors.darkGreen : Colors.grey.shade400,
+        ),
+        const SizedBox(height: 6),
+        Container(
+          width: 5,
+          height: 5,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: isSelected ? AppColors.darkGreen : Colors.transparent,
           ),
-          const SizedBox(height: 6),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            width: 5,
-            height: 5,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: isSelected ? AppColors.darkGreen : Colors.transparent,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

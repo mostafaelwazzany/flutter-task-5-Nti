@@ -1,60 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/shared/widgets/app_screen.dart';
 
 class EnergyScreen extends StatelessWidget {
   const EnergyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const AnalyticsScreen();
-  }
-}
-
-class AnalyticsScreen extends StatelessWidget {
-  const AnalyticsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScreen(
+      title: 'Analytics',
       backgroundColor: AppColors.backgroundAlt,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: CircleAvatar(
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
-            child: const Icon(Icons.menu, size: 20),
-          ),
-        ),
-        title: const Text(
-          'Analytics',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: CircleAvatar(
-              backgroundColor: const Color(0xFF3C6255),
-              radius: 18,
-              child: const Text(
-                'RB',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(

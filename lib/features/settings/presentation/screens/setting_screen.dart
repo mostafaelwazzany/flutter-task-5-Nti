@@ -1,90 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/constants/app_colors.dart';
+import 'package:flutter_application_1/shared/widgets/app_screen.dart';
 
-class SettingScreen extends StatefulWidget {
+class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
-}
-
-class _SettingScreenState extends State<SettingScreen> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        elevation: 0,
-        leading: Builder(
-          builder: (context) {
-            return Padding(
-              padding: const EdgeInsets.all(8),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade300, width: 0.5),
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.menu, color: Colors.black87, size: 20),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
-                ),
-              ),
-            );
-          },
-        ),
-        title: const Text(
-          'Settings',
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-        centerTitle: true,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: CircleAvatar(
-              backgroundColor: AppColors.primaryGreen,
-              radius: 18,
-              child: Text(
-                'RB',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: AppColors.primaryGreen),
-              child: Text(
-                'Rebecca Barbara',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () => Navigator.pop(context),
-            ),
-          ],
-        ),
-      ),
-      body: _buildSettingsTab(),
+    return AppScreen(
+      title: 'Settings',
+      body: _buildSettingsTab(context),
     );
   }
 
-  Widget _buildSettingsTab() {
+  Widget _buildSettingsTab(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -141,20 +70,32 @@ class _SettingScreenState extends State<SettingScreen> {
             child: Column(
               children: [
                 _buildNavigationTile(
+                  context,
                   Icons.phone_android_outlined,
                   'Connected Devices',
                   '12 devices paired',
                 ),
                 const Divider(height: 1, indent: 56),
-                _buildNavigationTile(Icons.wifi, 'Wi-Fi & Network', 'HomeNet_5G'),
+                _buildNavigationTile(
+                  context,
+                  Icons.wifi,
+                  'Wi-Fi & Network',
+                  'HomeNet_5G',
+                ),
                 const Divider(height: 1, indent: 56),
                 _buildNavigationTile(
+                  context,
                   Icons.help_outline,
                   'Help & Support',
                   'FAQs and contact',
                 ),
                 const Divider(height: 1, indent: 56),
-                _buildNavigationTile(Icons.info_outline, 'About', 'Version 2.4.1'),
+                _buildNavigationTile(
+                  context,
+                  Icons.info_outline,
+                  'About',
+                  'Version 2.4.1',
+                ),
               ],
             ),
           ),
@@ -229,7 +170,12 @@ class _SettingScreenState extends State<SettingScreen> {
     );
   }
 
-  Widget _buildNavigationTile(IconData icon, String title, String subtitle) {
+  Widget _buildNavigationTile(
+    BuildContext context,
+    IconData icon,
+    String title,
+    String subtitle,
+  ) {
     return ListTile(
       leading: Container(
         padding: const EdgeInsets.all(8),
