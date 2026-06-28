@@ -9,9 +9,6 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  int _currentIndex = 3;
-  final PageController _pageController = PageController(initialPage: 3);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,65 +80,7 @@ class _SettingScreenState extends State<SettingScreen> {
           ],
         ),
       ),
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        children: [
-          const Center(child: Text('Home Screen', style: TextStyle(fontSize: 24))),
-          const Center(
-            child: Text('Statistics Screen', style: TextStyle(fontSize: 24)),
-          ),
-          const Center(
-            child: Text('Calendar Screen', style: TextStyle(fontSize: 24)),
-          ),
-          _buildSettingsTab(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: AppColors.primaryGreen,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-            _pageController.animateToPage(
-              index,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart_outlined),
-            activeIcon: Icon(Icons.bar_chart),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            activeIcon: Icon(Icons.calendar_month),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            activeIcon: Icon(Icons.settings),
-            label: '',
-          ),
-        ],
-      ),
+      body: _buildSettingsTab(),
     );
   }
 

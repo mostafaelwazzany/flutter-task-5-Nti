@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/theme/app_theme.dart';
-import 'package:flutter_application_1/features/analytics/presentation/screens/energy_screen.dart';
 import 'package:flutter_application_1/features/auth/presentation/screens/sign_in_screen.dart';
-import 'package:flutter_application_1/features/home/presentation/screens/device_screen.dart';
 import 'package:flutter_application_1/features/menu/presentation/screens/menu_screen.dart';
-import 'package:flutter_application_1/features/settings/presentation/screens/setting_screen.dart';
-import 'package:flutter_application_1/features/smart_home/presentation/screens/smart_screen.dart';
+import 'package:flutter_application_1/shared/screens/main_navigation_screen.dart';
 import 'package:flutter_application_1/shared/screens/placeholder_screen.dart';
 
 void main() {
@@ -21,13 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const SettingScreen(),
+      home: const MainNavigationScreen(),
       routes: {
-        '/home': (_) => const DeviceScreen(),
+        '/home': (_) => const MainNavigationScreen(initialPage: 0),
         '/login': (_) => const SignInScreen(),
-        '/settings': (_) => const SettingScreen(),
-        '/statistics': (_) => const EnergyScreen(),
-        '/smart': (_) => const SmartScreen(),
+        '/settings': (_) => const MainNavigationScreen(initialPage: 3),
+        '/statistics': (_) => const MainNavigationScreen(initialPage: 1),
+        '/smart': (_) => const MainNavigationScreen(initialPage: 0),
         '/menu': (_) => const MenuScreen(),
         '/register': (_) => const PlaceholderScreen(title: 'Register'),
         '/profile': (_) => const PlaceholderScreen(title: 'Profile'),

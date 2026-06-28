@@ -158,37 +158,6 @@ class AnalyticsScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(32),
-            topRight: Radius.circular(32),
-          ),
-        ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          currentIndex: 1,
-          selectedItemColor: const Color(0xFF2D4A3E),
-          unselectedItemColor: Colors.black26,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: ''),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today_outlined),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              label: '',
-            ),
-          ],
-        ),
-      ),
     );
   }
 
