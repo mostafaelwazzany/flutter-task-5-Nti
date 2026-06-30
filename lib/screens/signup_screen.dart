@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/app_colors.dart';
-import 'package:flutter_application_1/screens/shop_screen.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/widgets/app_button.dart';
 import 'package:flutter_application_1/widgets/app_text_field.dart';
 
@@ -69,10 +69,10 @@ class SignupScreen extends StatelessWidget {
                     child: AppButton(
                       buttonLabel: 'Sign Up',
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ShopScreen(),
+                            builder: (context) => const HomeScreen(),
                           ),
                         );
                       },
