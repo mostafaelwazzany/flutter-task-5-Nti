@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/app_colors.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
+import 'package:flutter_application_1/screens/profile_screen.dart';
+import 'package:flutter_application_1/screens/shop_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -118,6 +121,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
         currentIndex: 3,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ShopScreen(),
+              ),
+            );
+          }
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
+              ),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),

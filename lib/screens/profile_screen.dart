@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/app_colors.dart';
+import 'package:flutter_application_1/screens/home_screen.dart';
 import 'package:flutter_application_1/screens/settings_screen.dart';
+import 'package:flutter_application_1/screens/shop_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -106,6 +108,22 @@ class ProfileScreen extends StatelessWidget {
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ),
+            );
+          }
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ShopScreen(),
+              ),
+            );
+          }
           if (index == 3) {
             Navigator.push(
               context,

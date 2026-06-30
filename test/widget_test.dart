@@ -4,7 +4,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_application_1/main.dart';
 
 void main() {
-  testWidgets('App opens home screen from shop', (WidgetTester tester) async {
+  testWidgets('App opens settings then home through bottom navigation', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
 
     expect(find.text('Sport Shop'), findsOneWidget);
@@ -18,12 +20,20 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('All Products'), findsOneWidget);
-    expect(find.text('Pro Soccer Ball'), findsOneWidget);
+
+    await tester.tap(find.text('Profile'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('John Doe'), findsOneWidget);
+
+    await tester.tap(find.text('Settings'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('GENERAL'), findsOneWidget);
 
     await tester.tap(find.text('Home'));
     await tester.pumpAndSettle();
 
     expect(find.text('New Collection'), findsOneWidget);
-    expect(find.text('Categories'), findsOneWidget);
   });
 }
