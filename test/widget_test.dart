@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_application_1/main.dart';
 
 void main() {
-  testWidgets('App opens profile screen after shop', (WidgetTester tester) async {
+  testWidgets('App opens settings screen after profile', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
 
     expect(find.text('Sport Shop'), findsOneWidget);
@@ -25,5 +25,11 @@ void main() {
 
     expect(find.text('John Doe'), findsOneWidget);
     expect(find.text('Edit Profile'), findsOneWidget);
+
+    await tester.tap(find.text('Settings'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('GENERAL'), findsOneWidget);
+    expect(find.text('Dark Mode'), findsOneWidget);
   });
 }
