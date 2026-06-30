@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/app_colors.dart';
+import 'package:flutter_application_1/screens/profile_screen.dart';
 
 class ShopScreen extends StatelessWidget {
   const ShopScreen({super.key});
@@ -23,28 +24,28 @@ class ShopScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         children: const [
           ProductCard(
-            image: '⚽',
+            image: 'SB',
             name: 'Pro Soccer Ball',
             subtitle: 'FIFA approved match ball',
             price: '\$29.99',
           ),
           SizedBox(height: 12),
           ProductCard(
-            image: '👟',
+            image: 'RX',
             name: 'Runner X1',
             subtitle: 'Lightweight running shoes',
             price: '\$89.99',
           ),
           SizedBox(height: 12),
           ProductCard(
-            image: '👕',
+            image: 'CJ',
             name: 'Classic Jersey',
             subtitle: 'Breathable fabric',
             price: '\$45.00',
           ),
           SizedBox(height: 12),
           ProductCard(
-            image: '🎾',
+            image: 'TR',
             name: 'Pro Tennis Racket',
             subtitle: 'Carbon fiber frame',
             price: '\$120.00',
@@ -55,6 +56,16 @@ class ShopScreen extends StatelessWidget {
         currentIndex: 1,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
+              ),
+            );
+          }
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
@@ -113,7 +124,11 @@ class ProductCard extends StatelessWidget {
             child: Center(
               child: Text(
                 image,
-                style: const TextStyle(fontSize: 28),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
               ),
             ),
           ),
